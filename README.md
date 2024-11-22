@@ -1,3 +1,3 @@
 # PROJECT-RED-EAR
 
-Python application by Beck in progress
+Python application development in progress. Current version is in alpha and proper documentation will be released on stable 1.0.0-alpha release

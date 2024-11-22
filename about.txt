@@ -1,0 +1,16 @@
+RED-EAR is an educational tool created by Beck (BK489).
+The software allows users to download all videos from a YouTube channel in audio format.
+It also generates a configuration file that enables automatic updates to the directory on subsequent runs.
+
+This project serves as a portfolio piece and demonstrates best practices in software development,
+including proper version control, documentation, and deployment.
+
+While downloading YouTube videos for personal use is not inherently illegal,
+redistribution or usage of the downloads for non-personal or non-educational purposes may be subject 
+to legal restrictions. Users are advised to seek permission from the content owner for any commercial use.
+
+For more information regarding legal considerations, please refer to the project's license.
+
+---The responsibility for the usage of this software lies entirely with the user---
+
+For more information please visit the project repository - https://github.com/BK489/PROJECT-RED-EAR
