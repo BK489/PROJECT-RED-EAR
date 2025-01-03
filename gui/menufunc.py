@@ -5,7 +5,7 @@ import webbrowser
 
 def aboutpressed():
     try:
-        with open("about.txt", "r") as file:
+        with open("assets/about.txt", "r") as file:
             license_text = file.read()
     except FileNotFoundError:
         license_text = "about.txt not found, please check location in directory"
@@ -27,7 +27,7 @@ def documentationpressed():
 
 def licencepressed():
     try:
-        with open("licence-info.txt", "r") as file:
+        with open("assets/licence-info.txt", "r") as file:
             license_text = file.read()
     except FileNotFoundError:
         license_text = "licence-info.txt not found, please check location in directory"

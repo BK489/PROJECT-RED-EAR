@@ -1,4 +1,4 @@
-RED-EAR is an educational tool created by Beck (BK489).
+RED-EAR is an educational tool created by BK489.
 The software allows users to download all videos from a YouTube channel in audio format.
 It also generates a configuration file that enables automatic updates to the directory on subsequent runs.
 
