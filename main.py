@@ -1,4 +1,4 @@
-from gui.tkinter_gui import App  #import app
+from app.tkinter_app import App  #import app
 
 def main():
     app = App()  #init app

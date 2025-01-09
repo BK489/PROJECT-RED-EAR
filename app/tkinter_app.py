@@ -1,19 +1,23 @@
+#packages
 from tkinter import *
 from tkinter.ttk import *
+from PIL import Image, ImageTk
+#my stuff
 from styles.gui_style import load_style
-from gui.menufunc import aboutpressed, documentationpressed, licencepressed
+from app.menufunc import aboutpressed, documentationpressed, licencepressed
 
 class App:
     def __init__(self):
         #main window
         self.root = Tk()
         self.root.title("RED-EAR v1.0-ALPHA")
-        self.root.geometry("450x250")
+        self.root.geometry("500x300")
         self.root.resizable(False, False)
         self.root.iconbitmap(False, "assets/red-ear-ico.ico")
         
         #background image
-        background_image = PhotoImage(file="assets/red-ear-background.png")
+        img = Image.open("assets/red-ear-background.png")
+        background_image = ImageTk.PhotoImage(img.resize((500, 300)))
         background_label = Label(self.root, image=background_image)
         background_label.image = background_image  # Keep a reference to avoid garbage collection
         background_label.place(x=-2, y=0)
@@ -25,7 +29,7 @@ class App:
         load_style()
 
     def setup_menu(self):
-        """Sets up the menu bar with dropdown menus."""
+        #Sets up the menu bar with dropdown menus.
         menu_bar = Menu(self.root, bg="red")
 
         #file dropdown
@@ -48,6 +52,10 @@ class App:
 
         self.root.config(menu=menu_bar)
 
+    def setup_widgets(self):
+        #sets up all widgets on app
+        print("test")
+
     def run(self):
-        """Runs the Tkinter main loop."""
+        #Runs the Tkinter main loop.
         self.root.mainloop()
