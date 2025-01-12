@@ -1,4 +1,4 @@
-#here are the functions for the menubar
+#here are the functions for gui operation such as menubar and entry box 
 from tkinter import *
 from tkinter.ttk import *
 import webbrowser
@@ -42,3 +42,37 @@ def licencepressed():
     textlabel.pack(expand=True, fill="both", padx=10, pady=10)
 
     return 0
+
+#func for grey infotext on entry fields before input
+def dir_click(event):
+    if event.widget.get() == "Download Folder...":
+        event.widget.delete(0, "end") # delete all the text in the entry
+        event.widget.insert(0, '') #Insert blank for user input
+        event.widget.config(foreground = 'black')
+    
+def dir_out(event):
+    if event.widget.get() == '':
+        event.widget.insert(0, "Download Folder...")
+        event.widget.config(foreground = 'grey')
+
+def vid_click(event):
+    if event.widget.get() == "Insert Video URL...":
+        event.widget.delete(0, "end") 
+        event.widget.insert(0, '') 
+        event.widget.config(foreground = 'black')
+    
+def vid_out(event):
+    if event.widget.get() == '':
+        event.widget.insert(0, "Insert Video URL...")
+        event.widget.config(foreground = 'grey')
+
+def channel_click(event):
+    if event.widget.get() == "Insert Channel URL...":
+        event.widget.delete(0, "end") 
+        event.widget.insert(0, '') 
+        event.widget.config(foreground = 'black')
+    
+def channel_out(event):
+    if event.widget.get() == '':
+        event.widget.insert(0, "Insert Channel URL...")
+        event.widget.config(foreground = 'grey')

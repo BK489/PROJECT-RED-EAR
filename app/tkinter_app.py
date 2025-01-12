@@ -4,7 +4,11 @@ from tkinter.ttk import *
 from PIL import Image, ImageTk
 #my stuff
 from styles.gui_style import load_style
-from app.menufunc import aboutpressed, documentationpressed, licencepressed
+from app.guifunc import ( 
+    aboutpressed, documentationpressed, licencepressed, 
+    dir_click, dir_out, vid_click, vid_out, channel_click, channel_out 
+)
+
 
 class App:
     def __init__(self):
@@ -60,16 +64,47 @@ class App:
         title_label = Label(self.root, text="RED-EAR V1.0.0-ALPHA", font="terminal")
         title_label.place(x=175, y=15)
 
-        #directory n config file
-        directory_text = Text(self.root, font="terminal 11", height=1, width=60)    
-        directory_text.place(x=20, y=53)
-        directory_text.insert("1.0", "C:/")
-        directory_label = Label(self.root, font="terminal 11", text="no config found")
-        directory_label.place(x=20,y=71)
-        choose_dir_button = Button(self.root, text="Choose Download Folder", style="Custom.TButton", command=lambda: print("choose dir pressed"))
-        choose_dir_button.place(x=350, y=50)
-        
+        #download dir stuff
+        directory_entry = Entry(self.root, font="terminal 11", width=60)    
+        directory_entry.place(x=30, y=53)
+        directory_entry.insert(0, "Download Folder...")
+        directory_entry.config(foreground="grey")
+        directory_entry.bind('<FocusIn>', dir_click)
+        directory_entry.bind('<FocusOut>', dir_out)    
 
+        directory_label = Label(self.root, font="terminal 11", text="no config found")
+        directory_label.place(x=30,y=72)
+
+        choose_dir_button = Button(self.root, text="Choose Download Folder", style="Custom.TButton", command=lambda: print("choose dir pressed"))
+        choose_dir_button.place(x=370, y=50)
+        
+        #single video URL stuff
+        vid_url_entry = Entry(self.root, font="terminal 11", width=60)
+        vid_url_entry.place(x=30, y=95)
+        vid_url_entry.insert(0, "Insert Video URL...")
+        vid_url_entry.config(foreground="grey")
+        vid_url_entry.bind('<FocusIn>', vid_click)
+        vid_url_entry.bind('<FocusOut>', vid_out)  
+
+        vid_url_label = Label(self.root, font="terminal 11", text="Invalid Video URL")
+        vid_url_label.place(x=30,y=114)
+
+        vid_url_button = Button(self.root, text="Add Video URL", style="Custom.TButton", command=lambda: print("add vid pressed"))
+        vid_url_button.place(x=370, y=92)
+
+        #channel URL stuff
+        channel_url_entry = Entry(self.root, font="terminal 11", width=60)
+        channel_url_entry.place(x=30, y=137)
+        channel_url_entry.insert(0, "Insert Channel URL...")
+        channel_url_entry.config(foreground="grey")
+        channel_url_entry.bind('<FocusIn>', channel_click)
+        channel_url_entry.bind('<FocusOut>', channel_out)  
+
+        channel_url_label = Label(self.root, font="terminal 11", text="Invalid Channel URL")
+        channel_url_label.place(x=30,y=156)
+
+        channel_url_button = Button(self.root, text="Add Channel URL", style="Custom.TButton", command=lambda: print("add channel pressed"))
+        channel_url_button.place(x=370, y=134)
 
     def run(self):
         #Runs the Tkinter main loop.
