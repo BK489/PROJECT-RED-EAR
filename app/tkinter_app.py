@@ -15,13 +15,13 @@ class App:
         #main window
         self.root = Tk()
         self.root.title("RED-EAR v1.0.0-ALPHA")
-        self.root.geometry("600x400")
+        self.root.geometry("600x440")
         self.root.resizable(False, False)
         self.root.iconbitmap(False, "assets/red-ear-ico.ico")
         
         #background image
         img = Image.open("assets/red-ear-background.png")
-        background_image = ImageTk.PhotoImage(img.resize((600, 400)))
+        background_image = ImageTk.PhotoImage(img.resize((600, 440)))
         background_label = Label(self.root, image=background_image)
         background_label.image = background_image  # Keep a reference to avoid garbage collection
         background_label.place(x=-1, y=0)
@@ -105,6 +105,30 @@ class App:
 
         channel_url_button = Button(self.root, text="Add Channel URL", style="Custom.TButton", command=lambda: print("add channel pressed"))
         channel_url_button.place(x=370, y=134)
+
+        #treeview stuff
+        mycolumns=("Video Title", "Channel", "Status", "Duration", "Size")
+        videos_tree = Treeview(self.root, columns=mycolumns, show="headings", height=10, style="Custom.Treeview")
+        for title in mycolumns:
+            videos_tree.heading(title, text=title)
+        videos_tree.column(mycolumns[0], width=250)
+        videos_tree.column(mycolumns[1], width=180)
+        videos_tree.column(mycolumns[2], width=50)
+        videos_tree.column(mycolumns[3], width=48)
+        videos_tree.column(mycolumns[4], width=50)
+        videos_tree.place(x=10, y=180)
+
+        #stopbutton
+        stop_button = Button(self.root, text="Stop", style="Custom.TButton", command=lambda: print("stop pressed"))
+        stop_button.place(x=472,y=405)
+
+        #startbutton
+        start_button = Button(self.root, text="Start", style="Custom.TButton", command=lambda: print("start pressed"))
+        start_button.place(x=534,y=405)
+
+        #loadingbar
+        loadingbar = Progressbar(self.root, length=450, style="Custom.Horizontal.TProgressbar")
+        loadingbar.place(x=10, y=407)
 
     def run(self):
         #Runs the Tkinter main loop.

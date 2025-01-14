@@ -12,7 +12,7 @@ def load_style():
     font=("Terminal", 11),
     background="firebrick1",
     foreground="white",
-)
+    )
     s.map(
     "Custom.TButton",
     background=[
@@ -22,7 +22,33 @@ def load_style():
     foreground=[
         ("disabled", "gray"),
     ],
-)
+    )
+
+    #treeview - table
+    s.configure(
+        "Custom.Treeview.Heading",
+        font=("Terminal", 11),
+        background="firebrick1",
+        foreground="white",
+    )
+    s.map(
+        "Custom.Treeview.Heading",
+    background=[
+        ("active", "firebrick2"),
+        ("pressed", "firebrick4"),
+    ],
+    foreground=[
+        ("disabled", "gray"),
+    ], 
+    )
+
+    #progressbar
+    s.configure(
+        "Custom.Horizontal.TProgressbar",
+        font=("Terminal", 11),
+        background="firebrick1",
+        foreground="white",
+    )
 
 
     return s
