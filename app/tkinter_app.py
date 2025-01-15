@@ -8,6 +8,7 @@ from app.guifunc import (
     aboutpressed, documentationpressed, licencepressed, 
     dir_click, dir_out, vid_click, vid_out, channel_click, channel_out 
 )
+from utils.input_func import browsedir, genconfig
 
 
 class App:
@@ -70,13 +71,14 @@ class App:
         directory_entry.insert(0, "Download Folder...")
         directory_entry.config(foreground="grey")
         directory_entry.bind('<FocusIn>', dir_click)
-        directory_entry.bind('<FocusOut>', dir_out)    
+        directory_entry.bind('<FocusOut>', dir_out)  
+        directory_entry.get()
 
-        directory_label = Label(self.root, font="terminal 11", text="no config found")
+        directory_label = Label(self.root, font="terminal 11", text="Select Folder")
         directory_label.place(x=30,y=72)
 
-        choose_dir_button = Button(self.root, text="Choose Download Folder", style="Custom.TButton", command=lambda: print("choose dir pressed"))
-        choose_dir_button.place(x=370, y=50)
+        browse_button = Button(self.root, text="Browse", style="Custom.TButton", command=lambda: browsedir(directory_entry, directory_label))
+        browse_button.place(x=370, y=50)
         
         #single video URL stuff
         vid_url_entry = Entry(self.root, font="terminal 11", width=60)
@@ -105,6 +107,10 @@ class App:
 
         channel_url_button = Button(self.root, text="Add Channel URL", style="Custom.TButton", command=lambda: print("add channel pressed"))
         channel_url_button.place(x=370, y=134)
+
+        #config button stuff
+        genconf_button = Button(self.root, text="Generate Config", style="Custom.TButton", command=lambda: genconfig(directory_entry, directory_label))
+        genconf_button.place(x=444, y=50)
 
         #treeview stuff
         mycolumns=("Video Title", "Channel", "Status", "Duration", "Size")
