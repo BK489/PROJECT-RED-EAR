@@ -13,7 +13,7 @@ def browsedir (inputfield, label):
     inputfield.config(foreground="black")
     inputfield.insert(0, filename)
     #config search and change attatcehd label 
-    label.config(text="you selected") ##logic search herebut decide on how da json gonna work first
+    label.config(text="check for config here") ##logic search herebut decide on how da json gonna work first!!!think u can do this now
 
 #gen config button
 def genconfig(inputfield, label):
