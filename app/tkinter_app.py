@@ -8,7 +8,7 @@ from app.guifunc import (
     aboutpressed, documentationpressed, licencepressed, 
     dir_click, dir_out, vid_click, vid_out, channel_click, channel_out 
 )
-from utils.input_func import browsedir, genconfig
+from utils.input_func import browsedir, dir_confcheck, genconfig
 
 
 class App:
@@ -70,12 +70,16 @@ class App:
         directory_entry.place(x=30, y=53)
         directory_entry.insert(0, "Download Folder...")
         directory_entry.config(foreground="grey")
+        def dirhandler(event):
+            dir_confcheck(directory_entry, directory_label)
         directory_entry.bind('<FocusIn>', dir_click)
-        directory_entry.bind('<FocusOut>', dir_out)  
-        directory_entry.get()
+        directory_entry.bind('<FocusOut>', dir_out)
 
         directory_label = Label(self.root, font="terminal 11", text="Select Folder")
         directory_label.place(x=30,y=72)
+
+        directory_entry.bind("<FocusIn>", dirhandler, add="+" )
+        directory_entry.bind("<FocusOut>", dirhandler, add="+" )
 
         browse_button = Button(self.root, text="Browse", style="Custom.TButton", command=lambda: browsedir(directory_entry, directory_label))
         browse_button.place(x=370, y=50)
