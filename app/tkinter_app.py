@@ -8,8 +8,10 @@ from app.guifunc import (
     aboutpressed, documentationpressed, licencepressed, 
     dir_click, dir_out, vid_click, vid_out, channel_click, channel_out 
 )
-from utils.input_func import browsedir, dir_confcheck, genconfig
-
+from utils.input_func import ( 
+    browsedir, dir_confcheck, genconfig,
+    vid_url_check
+)
 
 class App:
     def __init__(self):
@@ -78,8 +80,8 @@ class App:
         directory_label = Label(self.root, font="terminal 11", text="Select Folder")
         directory_label.place(x=30,y=72)
 
-        directory_entry.bind("<FocusIn>", dirhandler, add="+" )
-        directory_entry.bind("<FocusOut>", dirhandler, add="+" )
+        directory_entry.bind("<FocusIn>", dirhandler, add="+")
+        directory_entry.bind("<FocusOut>", dirhandler, add="+")
 
         browse_button = Button(self.root, text="Browse", style="Custom.TButton", command=lambda: browsedir(directory_entry, directory_label))
         browse_button.place(x=370, y=50)
@@ -89,11 +91,16 @@ class App:
         vid_url_entry.place(x=30, y=95)
         vid_url_entry.insert(0, "Insert Video URL...")
         vid_url_entry.config(foreground="grey")
+        def vidhandler(event):
+            vid_url_check(vid_url_entry, vid_url_label)
         vid_url_entry.bind('<FocusIn>', vid_click)
         vid_url_entry.bind('<FocusOut>', vid_out)  
 
-        vid_url_label = Label(self.root, font="terminal 11", text="Invalid Video URL")
+        vid_url_label = Label(self.root, font="terminal 11", text="Enter Video URL")
         vid_url_label.place(x=30,y=114)
+
+        vid_url_entry.bind("<FocusIn>", vidhandler, add="+")
+        vid_url_entry.bind("<FocusOut>", vidhandler, add="+")
 
         vid_url_button = Button(self.root, text="Add Video URL", style="Custom.TButton", command=lambda: print("add vid pressed"))
         vid_url_button.place(x=370, y=92)

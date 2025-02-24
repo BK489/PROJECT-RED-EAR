@@ -6,6 +6,7 @@ from tkinter import filedialog, messagebox
 import os, json
 
 from utils.config_func import load_config, config_exists
+from utils.url_func import url_is_good 
 
 #browse button
 def browsedir (inputfield, label):
@@ -21,7 +22,7 @@ def browsedir (inputfield, label):
     else:
         label.config(text="No Config File Found - Press Generate")
 
-#check config and load once text entered alternative to using browse button
+#check config and load on enter and exit dir entry
 def dir_confcheck(inputfield, label):
     entrypath = inputfield.get()
     if config_exists(entrypath):
@@ -65,8 +66,19 @@ def genconfig(inputfield, label):
 
     load_config()#######
     
+##check url on enter and exit video-url input entry
+def vid_url_check(inputfield, label):
+    url = inputfield.get()
+    
+    if url_is_good(url):
+        label.config(text="Press Add URL")
+        ###logic for adding url to json
+        pass
+    else:
+        label.config(text="Invalid URL")
 
-def add_vid():
+
+def add_vid(): 
     pass
 
 def add_chan():
